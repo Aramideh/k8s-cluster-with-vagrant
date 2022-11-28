@@ -100,7 +100,7 @@ Vagrant.configure("2") do |config|
       if box.vm.hostname == "master" then 
         box.vm.provision "shell", path:"./configure-master-node.sh"
         end
-      if box.vm.hostname == "node-01" || box.vm.hostname == "node-02" then ##TODO: create some regex to match worker hostnames
+      if [ box.vm.hostname == "node-01"] || [box.vm.hostname == "node-02"] then ##TODO: create some regex to match worker hostnames
         box.vm.provision "shell", path:"./configure-worker-nodes.sh"
       end
 

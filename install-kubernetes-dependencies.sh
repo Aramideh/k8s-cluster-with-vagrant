@@ -76,21 +76,6 @@ sudo systemctl restart docker
 
  
 
-
-setup_ssh ()
-{
-mkdir -m 755 ~/.ssh
-
-sudo tee ~/.ssh/authorized_keys <<EOF
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDN+0uwLtxQx/pWTit65cFRWITYBW9/LDBazn9X3A1aJinN4ibK1qk2yVeBU9wUx+k0+MTMoJUsrZPw8JnpIc0SvFvLh4G7QWMpZR5EMwDmmsN06N0XB8FQ+KeyrVXtEjI7UCDarXly/37RkqWbC9dGX0EU0hscyTjg6W5gWKH1Om5Pfx9G+cSsHZdjtsl9k4RdWBSfuWyEqW9oTdLGryBKrxvP9eFv7AeWFblwWnsEiWg55EW+jPSMl5yQomlrlec3Mgy/vdyYAhNrEXFKQr7loc7/RbnQrUJ20NS9WEjBFLXaqRhEPC/dPiGGTngcIH5Z5BNEr2+4crf7/PBOuuXQQ5Jh9DuBdfOqNQoaud91SwrGQvNSW6SHVg2LlfbBsM5QmHsqQ5zXwjqIAiyjCSU/MD07cqAhYAs56FQ+4zq+d2TfJ672ejnILxE5xktwfgNHC1FivvQHPw3D/Z5Y2HMTm5eYp7Tfm1hWMF+E20JFrAytfYCrQf/bsjwoENTv8ak= sadegh.a@gmail.com
-EOF
- echo '# Setup SSH for K8S Cluster' >> /etc/ssh/sshd_config
- echo 'PubKeyAuthentication yes' >> /etc/ssh/sshd_config
- echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
- echo 'ChallengeResponseAuthentication yes' >> /etc/ssh/sshd_config
- systemctl restart sshd.service
-}
-
 set_aliases ()
 {
  echo 'k=kubectl' >> ~/.bashrc
@@ -108,4 +93,3 @@ disable_swap
 iptables_setup
 install_docker_runtime
 set_aliases
-#setup_ssh
