@@ -36,8 +36,9 @@ echo 'END post_bootstraping_actions'
 
 create_join_command ()
 {
-echo 'Start create_join_command'        
-kubeadm token create --print-join-command | tee /vagrant/join_command.sh
+echo 'Start create_join_command'
+echo 'sudo -i'| tee /vagrant/join_command.sh      
+kubeadm token create --print-join-command | tee -a /vagrant/join_command.sh
 chmod +x /vagrant/join_command.sh
 echo 'END create_join_command'
 }

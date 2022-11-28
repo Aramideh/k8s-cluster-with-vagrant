@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+# fix line endings --> sed -i 's/\r//' setup.sh
 kubernetes_version=1.21.1
 
 install_required_packages ()
