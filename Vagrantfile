@@ -17,8 +17,8 @@ Vagrant.configure("2") do |config|
   
   boxes = [
     { :name => "master", :ip => MASTER_IP,  :cpus => 2, :memory => 4048 },
-    { :name => "node-01", :ip => NODE_01_IP, :cpus => 2, :memory => 4048 },
-	  { :name => "node-02", :ip => NODE_02_IP, :cpus => 2, :memory => 4048 },
+    { :name => "node-01", :ip => NODE_01_IP, :cpus => 1, :memory => 4048 },
+	  { :name => "node-02", :ip => NODE_02_IP, :cpus => 1, :memory => 4048 }
   ]
 
   #config.ssh.username = 'root'
@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "centos/8"
   config.vm.box_download_insecure=true
-  config.vm.synced_folder ".", "/vagrant" , disabled: false, smb_host: "192.168.0.2" , smb_username: "USERNAME", smb_password:"PASSWORD", type: "smb", mount_options: ["username=Aramideh","password=5330"]
+  config.vm.synced_folder ".", "/vagrant" , disabled: false, smb_host: "192.168.0.2" , smb_username: "Aramideh", smb_password:"5330", type: "smb", mount_options: ["username=Aramideh","password=5330"]
   
 
   # Disable automatic box update checking. If you disable this, then
@@ -100,10 +100,12 @@ Vagrant.configure("2") do |config|
       if box.vm.hostname == "master" then 
         box.vm.provision "shell", path:"./configure-master-node.sh"
         end
-      if [ box.vm.hostname == "node-01"] || [box.vm.hostname == "node-02"] then ##TODO: create some regex to match worker hostnames
+      if  box.vm.hostname == "node-01" then
         box.vm.provision "shell", path:"./configure-worker-nodes.sh"
       end
-
+      if box.vm.hostname == "node-02" then
+        box.vm.provision "shell", path:"./configure-worker-nodes.sh"
+      end
     end
   end
 
