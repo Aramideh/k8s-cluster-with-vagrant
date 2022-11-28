@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "centos/8"
   config.vm.box_download_insecure=true
-  config.vm.synced_folder ".", "/vagrant" , disabled: false, smb_host: "192.168.0.2" , smb_username: "Aramideh", smb_password:"5330", type: "smb", mount_options: ["username=Aramideh","password=5330"]
+  config.vm.synced_folder ".", "/vagrant" , disabled: false, smb_host: "192.168.0.2" , smb_username: "USERNAME", smb_password:"PASSWORD", type: "smb", mount_options: ["username=Aramideh","password=5330"]
   
 
   # Disable automatic box update checking. If you disable this, then
