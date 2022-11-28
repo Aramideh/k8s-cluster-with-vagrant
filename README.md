@@ -31,7 +31,8 @@ vagrant ssh master
 ```
 
 ### Note
-The initial codes was copied from [*Ugur Akgül*](https://ugurakgul.medium.com/creating-a-local-kubernetes-cluster-with-vagrant-ba591ab70ee2)
+The initial codes was copied from [*Ugur Akgül*](https://ugurakgul.medium.com/creating-a-local-kubernetes-cluster-with-vagrant-ba591ab70ee2) , but it has been heavily modified for Centos rather than Ubuntu.
+
 ### Authors
 * [**Sadeq Aramideh**](https://github.com/Aramideh)
 
