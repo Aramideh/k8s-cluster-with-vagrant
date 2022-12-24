@@ -1,7 +1,7 @@
 #!/bin/bash
 
 master_node=192.168.1.30
-kubernetes_version=1.21.1
+kubernetes_version=1.24.1
 pod_network_cidr=10.0.0.0/21
 
 bootstrap_kubernetes ()
@@ -34,6 +34,17 @@ echo 'END post_bootstraping_actions'
 }
 
 
+bashrc_config ()
+{
+echo 'Start bashrc config'
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+alias k=kubectl
+complete -o default -F __start_kubectl k
+. ~/.bashrc
+echo 'END bashrc config'
+}
+
 create_join_command ()
 {
 echo 'Start create_join_command'
@@ -47,4 +58,5 @@ echo 'END create_join_command'
 bootstrap_kubernetes
 post_bootstraping_actions
 install_network_cni
+bashrc_config
 create_join_command

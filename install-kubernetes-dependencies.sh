@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # fix line endings --> sed -i 's/\r//' setup.sh
-kubernetes_version=1.21.1
+kubernetes_version=1.24.1
 
 install_required_packages ()
 {
@@ -106,6 +106,10 @@ EOF
 # Set SELinux in permissive mode (effectively disabling it)
 sudo setenforce 0
 sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+mv /etc/containerd/config.toml /etc/containerd/config.toml.bak
+systemctl restart containerd
+
 
 sudo yum install -y kubelet-$kubernetes_version kubeadm-$kubernetes_version kubectl-$kubernetes_version --disableexcludes=kubernetes
 

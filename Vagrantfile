@@ -4,7 +4,7 @@
 
 MASTER_IP       = "192.168.1.30"
 NODE_01_IP      = "192.168.1.31"
-NODE_02_IP      = "192.168.1.32"
+#NODE_02_IP      = "192.168.1.32"
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -17,8 +17,8 @@ Vagrant.configure("2") do |config|
   
   boxes = [
     { :name => "master", :ip => MASTER_IP,  :cpus => 2, :memory => 4048 },
-    { :name => "node-01", :ip => NODE_01_IP, :cpus => 1, :memory => 4048 },
-	  { :name => "node-02", :ip => NODE_02_IP, :cpus => 1, :memory => 4048 }
+    { :name => "node-01", :ip => NODE_01_IP, :cpus => 2, :memory => 4048 }#,
+	 # { :name => "node-02", :ip => NODE_02_IP, :cpus => 1, :memory => 4048 }
   ]
 
   #config.ssh.username = 'root'
